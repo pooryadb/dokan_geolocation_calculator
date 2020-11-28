@@ -162,7 +162,7 @@ class Dgcpdb_Admin {
 
 		$page_title = __('Dokan stores geolocation', 'dgcpdb');
 		$menu_title = __('Dokan stores PDB', 'dgcpdb');
-		$function   = 'dgcpdb_main_slug_callback';
+		$function   = array($this, 'dgcpdb_main_slug_callback');
 
 		add_menu_page(
 			$page_title,
@@ -179,11 +179,7 @@ class Dgcpdb_Admin {
 		$page_title = __("Coordinates", "sr_pdb");
 		$menu_title = __("Coordinates", "sr_pdb");
 		$slug       = $main_slug;
-		$function   = 'dgcpdb_main_slug_callback';
-
-		function dgcpdb_main_slug_callback() {
-			require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-coordinate.php';
-		}
+		$function   = array($this, 'dgcpdb_main_slug_callback');
 
 		add_submenu_page(
 			$main_slug,
@@ -193,6 +189,32 @@ class Dgcpdb_Admin {
 			$slug,
 			$function
 		);
+	}
+
+	function dgcpdb_main_slug_callback() {
+		//handle data saving
+		if (!empty($_POST)) {
+			//			error_log('$_POST ' . var_export($_POST, true));
+			if (isset($_POST['user_id'])) {
+				for ($i = 0; $i < sizeof($_POST['user_id']); $i++) {
+					update_user_meta(
+						$_POST['user_id'][$i],
+						Constants_Dgcpdb::my_user_meta_key,
+						array(
+							'lat'      => $_POST['lat'][$i],
+							'lng'      => $_POST['lat'][$i],
+							'diameter' => $_POST['diameter'][$i],
+							'enabled'  => isset($_POST['enabled'][$i]) ? 'yes' : 'no'
+						)
+					);
+				}
+			}
+
+			$enable_api_option_key = isset($_POST[Constants_Dgcpdb::enable_api_option_key]) ? 'yes' : 'no';
+			update_option(Constants_Dgcpdb::enable_api_option_key, $enable_api_option_key);
+
+		}
+		require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-coordinate.php';
 	}
 
 }

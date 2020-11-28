@@ -88,12 +88,12 @@ if (empty($dokan_user_id_list)) {
                         id="city:<?php echo $user_id; ?>"><?php echo $user_dokan_data["address"]["city"]; ?></td>
                     <td contenteditable="false"
                         id="lat:<?php echo $user_id; ?>">
-                        <input type="number" class="dgcpdb_number_input" name="lat[]"
+                        <input type="number" class="dgcpdb_number_input" name="lat[]" step="0.000001" min="0" max="90"
                                value="<?php echo $user_dgcpdb_data['lat'] ?>">
                     </td>
                     <td contenteditable="false"
                         id="lng:<?php echo $user_id; ?>">
-                        <input type="number" class="dgcpdb_number_input" name="lng[]"
+                        <input type="number" class="dgcpdb_number_input" name="lng[]" step="0.000001" min="0" max="180"
                                value="<?php echo $user_dgcpdb_data['lng'] ?>">
                     </td>
                     <td contenteditable="false"
@@ -105,7 +105,7 @@ if (empty($dokan_user_id_list)) {
                         id="enabled:<?php echo $user_id; ?>">
                         <label class="dgcpdb_switch">
                             <input type="checkbox" class="dgcpdb_checkbox" name="enabled[<?php echo $index; ?>]" <?php
-							checked($user_dgcpdb_data['enabled']) ?>>
+							checked($user_dgcpdb_data['enabled'], 'yes') ?>>
                             <span class="dgcpdb_switch_slider round"></span>
                         </label>
                     </td>
@@ -123,7 +123,7 @@ if (empty($dokan_user_id_list)) {
             <div class="form-check">
                 <label class="dgcpdb_switch">
                     <input type="checkbox" class="form-check-input" name="enable_api"
-						<?php checked(get_option(Constants_Dgcpdb::enable_api_option_key, 0), 0); ?>>
+						<?php checked(get_option(Constants_Dgcpdb::enable_api_option_key, 'yes'), 'yes'); ?>>
                     <span class="dgcpdb_switch_slider round"></span>
                 </label>
                 <label class="form-check-label"><?php _e('Enable WP-API ?', 'dgcpdb'); ?></label>

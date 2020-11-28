@@ -159,6 +159,7 @@ class Dgcpdb {
 
 		$this->loader->add_action('admin_notices', $plugin_admin, 'check_dokan_state');
 
+		$this->loader->add_action('admin_menu', $plugin_admin, 'add_admin_menus');
 	}
 
 	/**

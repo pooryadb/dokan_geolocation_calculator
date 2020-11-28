@@ -11,6 +11,9 @@
  * @package    Dgcpdb
  * @subpackage Dgcpdb/admin/partials
  */
-?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
+// check user capabilities
+if (!current_user_can('manage_options')) {
+	return;
+}
+?>

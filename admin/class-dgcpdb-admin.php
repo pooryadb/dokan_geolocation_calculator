@@ -30,7 +30,6 @@ class Dgcpdb_Admin {
 	 * @var      string $plugin_name The ID of this plugin.
 	 */
 	private $plugin_name;
-
 	/**
 	 * The version of this plugin.
 	 *
@@ -113,6 +112,52 @@ class Dgcpdb_Admin {
 			$message = sprintf(__('please enable dokan-pro plugin or %s plugin will not work correctly', 'dgcpdb'), DGCPDB_PLUGIN_NAME);
 			echo "<div class='notice notice-error'><p>$message</p></div>";
 		}
+	}
+
+	/**
+	 * Register the admin menus
+	 *
+	 * @since    1.0.0
+	 */
+	public function add_admin_menus() {
+		$position   = 16;
+		$capability = 'manage_options';
+		$main_slug  = Constants_Dgcpdb::main_menu_slug;
+
+
+		$page_title = __('Dokan stores geolocation', 'dgcpdb');
+		$menu_title = __('Dokan stores PDB', 'dgcpdb');
+		$function   = 'dgcpdb_main_slug_callback';
+
+		add_menu_page(
+			$page_title,
+			$menu_title,
+			$capability,
+			$main_slug,
+			$function,
+			'dashicons-location',
+			$position
+		);
+
+		//---------------------------------
+
+		$page_title = __("Coordinates", "sr_pdb");
+		$menu_title = __("Coordinates", "sr_pdb");
+		$slug       = $main_slug;
+		$function   = 'dgcpdb_main_slug_callback';
+
+		function dgcpdb_main_slug_callback() {
+			require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-coordinate.php';
+		}
+
+		add_submenu_page(
+			$main_slug,
+			$page_title,
+			$menu_title,
+			$capability,
+			$slug,
+			$function
+		);
 	}
 
 }

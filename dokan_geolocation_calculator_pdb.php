@@ -38,6 +38,8 @@ if (!defined('WPINC')) {
 define('DGCPDB_VERSION', '1.0.0');
 define('DGCPDB_PLUGIN_NAME', __('Dokan Geolocation Calculator', 'dgcpdb'));
 
+require plugin_dir_path(__FILE__) . 'includes/Constants_Dgcpdb.php';
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-dgcpdb-activator.php

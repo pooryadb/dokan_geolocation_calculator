@@ -59,7 +59,7 @@ class Dgcpdb_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles($hook) {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,8 +73,26 @@ class Dgcpdb_Admin {
 		 * class.
 		 */
 
+		if (stripos($hook, 'dgcpdb') === false) {
+			return;
+		}
+
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/dgcpdb-admin.css', array(), $this->version, 'all');
 
+		if (!isset($GLOBALS['text_direction'])) {
+			wp_register_style(
+				$this->plugin_name . '_admin_bootstrap_css',
+				plugin_dir_url(__FILE__) . 'css/bootstrap/bootstrap-rtl.min.css'
+			);
+		} else {
+			if ('rtl' == _x('ltr', 'text direction')) {
+				wp_register_style(
+					$this->plugin_name . '_admin_bootstrap_css',
+					plugin_dir_url(__FILE__) . 'css/bootstrap/bootstrap.min.css'
+				);
+			}
+		}
+		wp_enqueue_style($this->plugin_name . '_admin_bootstrap_css');
 	}
 
 	/**
@@ -82,7 +100,7 @@ class Dgcpdb_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts($hook) {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,7 +114,24 @@ class Dgcpdb_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/dgcpdb-admin.js', array('jquery'), $this->version, false);
+		if (stripos($hook, 'dgcpdb') === false) {
+			return;
+		}
+
+		wp_enqueue_script(
+			$this->plugin_name,
+			plugin_dir_url(__FILE__) . 'js/dgcpdb-admin.js',
+			array('jquery'),
+			$this->version,
+			false
+		);
+		wp_enqueue_script(
+			$this->plugin_name . '_admin_bootstrap_js',
+			plugin_dir_url(__FILE__) . 'js/bootstrap.js',
+			array('bootstrap'),
+			$this->version,
+			false
+		);
 
 	}
 

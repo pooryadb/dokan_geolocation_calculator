@@ -44,7 +44,7 @@ if (empty($dokan_user_id_list)) {
 	<?php } ?>
 
     <form action="" method="post">
-        <h3><a href="#stores_table"><?php _e('Stores Table', 'dgcpdb'); ?></a></h3>
+        <h3 id="stores_table"><a href="#stores_table"><?php _e('Stores Table', 'dgcpdb'); ?></a></h3>
 
         <table class="table dgcpdb_zebra_style">
             <thead>
@@ -119,7 +119,7 @@ if (empty($dokan_user_id_list)) {
         </table>
 
         <div class="dgcpdb_form">
-            <h3><a href="#api_section"><?php _e('API section', 'dgcpdb'); ?></a></h3>
+            <h3 id="api_section"><a href="#api_section"><?php _e('API section', 'dgcpdb'); ?></a></h3>
             <div class="form-check">
                 <label class="dgcpdb_switch">
                     <input type="checkbox" class="form-check-input" name="enable_api"

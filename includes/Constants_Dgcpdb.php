@@ -4,6 +4,8 @@
 abstract class Constants_Dgcpdb {
 	const main_menu_slug = 'dgcpdb_main_slug';
 
+	const enable_api_option_key = 'dgcpdb_enable_api';
+
 	const my_user_meta_key = 'dgcpdb_meta';
 	const user_meta_defaults
 		= array(

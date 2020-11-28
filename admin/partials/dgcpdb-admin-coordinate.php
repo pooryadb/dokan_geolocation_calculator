@@ -44,7 +44,7 @@ if (empty($dokan_user_id_list)) {
 	<?php } ?>
 
     <form action="" method="post">
-        <h3><?php _e('Stores Table', 'dgcpdb'); ?></h3>
+        <h3><a href="#stores_table"><?php _e('Stores Table', 'dgcpdb'); ?></a></h3>
 
         <table class="table dgcpdb_zebra_style">
             <thead>
@@ -117,6 +117,18 @@ if (empty($dokan_user_id_list)) {
 			<?php } ?>
             </tbody>
         </table>
+
+        <div class="dgcpdb_form">
+            <h3><a href="#api_section"><?php _e('API section', 'dgcpdb'); ?></a></h3>
+            <div class="form-check">
+                <label class="dgcpdb_switch">
+                    <input type="checkbox" class="form-check-input" name="enable_api"
+						<?php checked(get_option(Constants_Dgcpdb::enable_api_option_key, 0), 0); ?>>
+                    <span class="dgcpdb_switch_slider round"></span>
+                </label>
+                <label class="form-check-label"><?php _e('Enable WP-API ?', 'dgcpdb'); ?></label>
+            </div>
+        </div>
 
         <input type="submit" class="btn btn-primary px-5 my-5" value="<?php _e('Save', 'dgcpdb'); ?>">
 

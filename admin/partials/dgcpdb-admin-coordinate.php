@@ -88,29 +88,29 @@ if (empty($dokan_user_id_list)) {
                         id="city:<?php echo $user_id; ?>"><?php echo $user_dokan_data["address"]["city"]; ?></td>
                     <td contenteditable="false"
                         id="lat:<?php echo $user_id; ?>">
-                        <input type="number" class="dgcpdb_number_input" name="[<?php echo $index; ?>][lat]"
+                        <input type="number" class="dgcpdb_number_input" name="lat[]"
                                value="<?php echo $user_dgcpdb_data['lat'] ?>">
                     </td>
                     <td contenteditable="false"
                         id="lng:<?php echo $user_id; ?>">
-                        <input type="number" class="dgcpdb_number_input" name="[<?php echo $index; ?>][lng]"
+                        <input type="number" class="dgcpdb_number_input" name="lng[]"
                                value="<?php echo $user_dgcpdb_data['lng'] ?>">
                     </td>
                     <td contenteditable="false"
                         id="diameter:<?php echo $user_id; ?>">
-                        <input type="number" class="dgcpdb_number_input" name="[<?php echo $index; ?>][diameter]" step="0.1" min="0.1"
+                        <input type="number" class="dgcpdb_number_input" name="diameter[]" step="0.1" min="0.1"
                                value="<?php echo $user_dgcpdb_data['diameter'] ?>">
                     </td>
                     <td contenteditable="false"
                         id="enabled:<?php echo $user_id; ?>">
                         <label class="dgcpdb_switch">
-                            <input type="checkbox" class="dgcpdb_checkbox" name="[<?php echo $index; ?>][enabled]" <?php
+                            <input type="checkbox" class="dgcpdb_checkbox" name="enabled[<?php echo $index; ?>]" <?php
 							checked($user_dgcpdb_data['enabled']) ?>>
                             <span class="dgcpdb_switch_slider round"></span>
                         </label>
                     </td>
 
-                    <input type="hidden" name="[<?php echo $index; ?>][user_id]" value="<?php echo $user_id; ?>">
+                    <input type="hidden" name="user_id[]" value="<?php echo $user_id; ?>">
 
                 </tr>
 

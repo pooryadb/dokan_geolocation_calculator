@@ -26,7 +26,7 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
 	die;
 }
 
@@ -35,14 +35,14 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'DGCPDB_VERSION', '1.0.0' );
+define('DGCPDB_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-dgcpdb-activator.php
  */
 function activate_dgcpdb() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-dgcpdb-activator.php';
+	require_once plugin_dir_path(__FILE__) . 'includes/class-dgcpdb-activator.php';
 	Dgcpdb_Activator::activate();
 }
 
@@ -51,18 +51,18 @@ function activate_dgcpdb() {
  * This action is documented in includes/class-dgcpdb-deactivator.php
  */
 function deactivate_dgcpdb() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-dgcpdb-deactivator.php';
+	require_once plugin_dir_path(__FILE__) . 'includes/class-dgcpdb-deactivator.php';
 	Dgcpdb_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_dgcpdb' );
-register_deactivation_hook( __FILE__, 'deactivate_dgcpdb' );
+register_activation_hook(__FILE__, 'activate_dgcpdb');
+register_deactivation_hook(__FILE__, 'deactivate_dgcpdb');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-dgcpdb.php';
+require plugin_dir_path(__FILE__) . 'includes/class-dgcpdb.php';
 
 /**
  * Begins execution of the plugin.
@@ -79,4 +79,5 @@ function run_dgcpdb() {
 	$plugin->run();
 
 }
+
 run_dgcpdb();

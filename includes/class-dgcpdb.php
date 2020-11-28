@@ -35,7 +35,7 @@ class Dgcpdb {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Dgcpdb_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Dgcpdb_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +44,7 @@ class Dgcpdb {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -53,7 +53,7 @@ class Dgcpdb {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -67,7 +67,7 @@ class Dgcpdb {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'DGCPDB_VERSION' ) ) {
+		if (defined('DGCPDB_VERSION')) {
 			$this->version = DGCPDB_VERSION;
 		} else {
 			$this->version = '1.0.0';
@@ -103,24 +103,24 @@ class Dgcpdb {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-dgcpdb-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-dgcpdb-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-dgcpdb-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-dgcpdb-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-dgcpdb-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-dgcpdb-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-dgcpdb-public.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-dgcpdb-public.php';
 
 		$this->loader = new Dgcpdb_Loader();
 
@@ -139,7 +139,7 @@ class Dgcpdb {
 
 		$plugin_i18n = new Dgcpdb_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 
 	}
 
@@ -152,11 +152,32 @@ class Dgcpdb {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Dgcpdb_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Dgcpdb_Admin($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 
+	}
+
+	/**
+	 * The name of the plugin used to uniquely identify it within the context of
+	 * WordPress and to define internationalization functionality.
+	 *
+	 * @return    string    The name of the plugin.
+	 * @since     1.0.0
+	 */
+	public function get_plugin_name() {
+		return $this->plugin_name;
+	}
+
+	/**
+	 * Retrieve the version number of the plugin.
+	 *
+	 * @return    string    The version number of the plugin.
+	 * @since     1.0.0
+	 */
+	public function get_version() {
+		return $this->version;
 	}
 
 	/**
@@ -168,10 +189,10 @@ class Dgcpdb {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Dgcpdb_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Dgcpdb_Public($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 
 	}
 
@@ -185,34 +206,13 @@ class Dgcpdb {
 	}
 
 	/**
-	 * The name of the plugin used to uniquely identify it within the context of
-	 * WordPress and to define internationalization functionality.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The name of the plugin.
-	 */
-	public function get_plugin_name() {
-		return $this->plugin_name;
-	}
-
-	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    Dgcpdb_Loader    Orchestrates the hooks of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_loader() {
 		return $this->loader;
-	}
-
-	/**
-	 * Retrieve the version number of the plugin.
-	 *
-	 * @since     1.0.0
-	 * @return    string    The version number of the plugin.
-	 */
-	public function get_version() {
-		return $this->version;
 	}
 
 }

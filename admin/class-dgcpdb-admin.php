@@ -101,4 +101,18 @@ class Dgcpdb_Admin {
 
 	}
 
+	public function check_dokan_state() {
+		include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+
+		if (!is_plugin_active('dokan-lite/dokan.php')) {
+			$message = sprintf(__('please enable dokan-lite plugin or %s plugin will not work correctly', 'dgcpdb'), DGCPDB_PLUGIN_NAME);
+			echo "<div class='notice notice-error'><p>$message</p></div>";
+		}
+
+		if (!is_plugin_active('dokan-pro/dokan-pro.php')) {
+			$message = sprintf(__('please enable dokan-pro plugin or %s plugin will not work correctly', 'dgcpdb'), DGCPDB_PLUGIN_NAME);
+			echo "<div class='notice notice-error'><p>$message</p></div>";
+		}
+	}
+
 }

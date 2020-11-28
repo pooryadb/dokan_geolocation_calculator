@@ -1,4 +1,87 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+body {
+    background-color: #f0f0f0 !important;
+}
+
+input[type=checkbox] {
+    position: initial;
+}
+
+.dgcpdb_message {
+    border: 1px solid #e7e62a;
+    border-right: 4px solid #e7e62a !important;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    padding: 5px;
+    margin: 10px;
+}
+
+.dgcpdb_message p {
+    color: #333333;
+    font-weight: bold;
+}
+
+
+/*---------- zebra_style ----------*/
+table.dgcpdb_zebra_style {
+    text-align: left;
+    border: 1px solid #ccc;
+    margin-bottom: 25px;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ececec;
+}
+
+table.dgcpdb_zebra_style th {
+    color: #444;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px 4px;
+
+}
+
+table.dgcpdb_zebra_style td {
+    text-align: left !important;
+    direction: ltr !important;
+    color: #777;
+    padding: 4px;
+    font-size: 13px;
+}
+
+table.dgcpdb_zebra_style th {
+    text-align: left !important;
+}
+
+table.dgcpdb_zebra_style tbody tr:nth-child(odd) {
+    background-color: #d6d6d6;
+}
+
+table.dgcpdb_zebra_style tbody select {
+    color: #777 !important;
+    background-color: #00000000 !important;
+    border: none !important;
+}
+
+table.dgcpdb_zebra_style tfoot {
+    background-color: #f9f9f9 !important;
+    border-top: 2px dashed #d6d6d6;
+}
+
+table.dgcpdb_zebra_style tfoot select,
+table.dgcpdb_zebra_style tfoot input {
+    color: #777 !important;
+    background-color: #00000005 !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: #444444 2px solid !important;
+    border-radius: unset !important;
+}
+
+table.dgcpdb_zebra_style input[type=number],
+table.dgcpdb_zebra_style input[type=text] {
+    background-color: #ffffff00;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-bottom: 2px solid darkgray;
+}

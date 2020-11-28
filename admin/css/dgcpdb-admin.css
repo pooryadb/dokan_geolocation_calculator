@@ -85,3 +85,68 @@ table.dgcpdb_zebra_style input[type=text] {
     border: none;
     border-bottom: 2px solid darkgray;
 }
+
+/*---------- toggle button ----------*/
+
+/* The switch - the box around the slider */
+.dgcpdb_switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.dgcpdb_switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.dgcpdb_switch_slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #797979;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.dgcpdb_switch_slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 13px;
+    left: 1px;
+    bottom: 1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .dgcpdb_switch_slider {
+    background-color: #2196F3;
+}
+
+input:focus + .dgcpdb_switch_slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .dgcpdb_switch_slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+}
+
+/* Rounded sliders */
+.dgcpdb_switch_slider.round {
+    border-radius: 15px;
+}
+
+.dgcpdb_switch_slider.round:before {
+    border-radius: 50%;
+}

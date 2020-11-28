@@ -103,8 +103,11 @@ if (empty($dokan_user_id_list)) {
                     </td>
                     <td contenteditable="false"
                         id="enabled:<?php echo $user_id; ?>">
-                        <input type="checkbox" class="dgcpdb_checkbox" name="[<?php echo $index; ?>][enabled]" <?php
-						checked($user_dgcpdb_data['enabled']) ?>>
+                        <label class="dgcpdb_switch">
+                            <input type="checkbox" class="dgcpdb_checkbox" name="[<?php echo $index; ?>][enabled]" <?php
+							checked($user_dgcpdb_data['enabled']) ?>>
+                            <span class="dgcpdb_switch_slider round"></span>
+                        </label>
                     </td>
 
                     <input type="hidden" name="[<?php echo $index; ?>][user_id]" value="<?php echo $user_id; ?>">

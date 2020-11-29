@@ -77,7 +77,7 @@ class Dgcpdb {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
+		$this->define_api_hooks();
 
 	}
 
@@ -89,7 +89,6 @@ class Dgcpdb {
 	 * - Dgcpdb_Loader. Orchestrates the hooks of the plugin.
 	 * - Dgcpdb_i18n. Defines internationalization functionality.
 	 * - Dgcpdb_Admin. Defines all hooks for the admin area.
-	 * - Dgcpdb_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -117,10 +116,9 @@ class Dgcpdb {
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-dgcpdb-admin.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
+		 * The class responsible for defining all actions that occur in the wp-api of the site.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-dgcpdb-public.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/api/class-dgcpdb-ApiBaseController.php';
 
 		$this->loader = new Dgcpdb_Loader();
 
@@ -184,18 +182,16 @@ class Dgcpdb {
 	}
 
 	/**
-	 * Register all of the hooks related to the public-facing functionality
-	 * of the plugin.
+	 * Register all of the hooks related to the wp-api functionality of the plugin.
 	 *
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+	private function define_api_hooks() {
 
-		$plugin_public = new Dgcpdb_Public($this->get_plugin_name(), $this->get_version());
+		$plugin_public = new ApiBaseController($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+		$this->loader->add_action('rest_api_init', $plugin_public, 'register_routes');
 
 	}
 

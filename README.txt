@@ -8,18 +8,19 @@ Stable tag: 5.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Admin set coordinates for each store and plugin find nearest store from user location in API request.
+Admin set coordinates for each store and plugin find nearest store from user location in a API request.
 
 == Description ==
 
-This wordpress plugin adds menu to dokan-menu that admin can set latitude and longitude and acceptable diameter for each store.
-Also, set new WP-api endpoint that accept lat & lng args as user location and response only nearest store name.
+This wordpress plugin adds menu to beside dokan-menu and admin can set latitude, longitude, acceptable diameter for each store.
+Also, set new WP-api endpoint that accept lat & lng args as user location and response only nearest store name or message.
 
 == Installation ==
 
 1. Upload `zip-file` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. go to `dokan->store locations` menu and set latitude, longitude, diameter, enabled options
+3. go to `Dokan Stores PDB` menu and set latitude, longitude, diameter, enabled options
+4. enable WP-API and set message for no store found condition
 
 Prerequisites:
 - installed Dokan-lite & Dokan-pro.

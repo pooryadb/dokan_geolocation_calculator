@@ -77,6 +77,7 @@ class Dgcpdb {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
+		$this->define_api_hooks();
 
 	}
 
@@ -113,6 +114,11 @@ class Dgcpdb {
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-dgcpdb-admin.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the wp-api of the site.
+		 */
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/api/class-dgcpdb-ApiBaseController.php';
 
 		$this->loader = new Dgcpdb_Loader();
 
@@ -173,6 +179,20 @@ class Dgcpdb {
 	 */
 	public function get_version() {
 		return $this->version;
+	}
+
+	/**
+	 * Register all of the hooks related to the wp-api functionality of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_api_hooks() {
+
+		$plugin_public = new ApiBaseController($this->get_plugin_name(), $this->get_version());
+
+		$this->loader->add_action('rest_api_init', $plugin_public, 'register_routes');
+
 	}
 
 	/**

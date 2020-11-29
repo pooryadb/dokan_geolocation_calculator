@@ -212,7 +212,7 @@ class Dgcpdb_Admin {
 			$enable_api_option_key = isset($_POST['enable_api']) ? 'yes' : 'no';
 			update_option(Constants_Dgcpdb::enable_api_option_key, $enable_api_option_key);
 
-			$no_store_message_html = isset($_POST['api_not_found_message']) ? $_POST['api_not_found_message'] : '';
+			$no_store_message_html = isset($_POST['api_not_found_message']) ? stripslashes(wp_filter_post_kses(addslashes($_POST['api_not_found_message']))) : '';
 			update_option(Constants_Dgcpdb::not_found_city_message_api_option_key, $no_store_message_html);
 
 		}

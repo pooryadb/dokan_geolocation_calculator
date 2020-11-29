@@ -127,6 +127,33 @@ if (empty($dokan_user_id_list)) {
                     <span class="dgcpdb_switch_slider round"></span>
                 </label>
                 <label class="form-check-label"><?php _e('Enable WP-API ?', 'dgcpdb'); ?></label>
+                <div class="dgcpdb_code_box">
+                    <table>
+                        <tr>
+                            <td>API URL:</td>
+                            <td><code><?php echo sprintf("%s/wp-json/dgcpdb/v1/find_store", site_url()) ?></code></td>
+                        </tr>
+                        <tr>
+                            <td>method:</td>
+                            <td><code>Post</code></td>
+                        </tr>
+                        <tr>
+                            <td>params:</td>
+                            <td><code>lat=[float] & lng=[float]</code></td>
+                        </tr>
+                        <tr>
+                            <td>json response:</td>
+                            <td>
+                                <code>
+                                    {
+                                    "message" => [HTML message when city not-found],
+                                    "city" => [string city-name | null]
+                                    }
+                                </code>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
             <div class="my-5">

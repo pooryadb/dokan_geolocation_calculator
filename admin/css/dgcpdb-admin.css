@@ -168,3 +168,12 @@ input:checked + .dgcpdb_switch_slider:before {
     margin-bottom: 20px;
     border-bottom: 1px solid #bcbcbc;
 }
+
+.dgcpdb_code_box {
+    text-align: left;
+    direction: ltr;
+    background-color: #FCF8E3;
+    color: black;
+    font-size: 10pt;
+    padding: 5px;
+}

@@ -128,6 +128,26 @@ if (empty($dokan_user_id_list)) {
                 </label>
                 <label class="form-check-label"><?php _e('Enable WP-API ?', 'dgcpdb'); ?></label>
             </div>
+
+            <div class="my-5">
+                <label for="api_not_found_message">
+                    <h5><?php _e('Enter message when ther no near store to user.', 'dgcpdb'); ?></h5>
+					<?php _e('Please keep message short and only use simple HTML tags.', 'dgcpdb'); ?>
+                </label>
+				<?php
+				$content = get_option(Constants_Dgcpdb::not_found_city_message_api_option_key, "There is no store near you!");
+				wp_editor(
+					$content,
+					'api_not_found_message',
+					array(
+						'textarea_name' => 'api_not_found_message',
+						'textarea_rows' => 3,
+						'quicktags'     => array('buttons' => 'strong,em,link'),
+						'teeny'         => true,
+						'media_buttons' => false,
+					)
+				); ?>
+            </div>
         </div>
 
         <input type="submit" class="btn btn-primary px-5 my-5" value="<?php _e('Save', 'dgcpdb'); ?>">

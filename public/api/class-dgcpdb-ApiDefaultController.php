@@ -15,8 +15,11 @@ class ApiDefaultController extends ApiBaseController {
 
 	public function init(WP_REST_Request $request) {
 		try {
+			if ($this->is_api_enabled()) {
+				throw new Exception('API is disabled.', 204);
+			}
 			if (!method_exists($this, $this->method)) {
-				throw new Exception('No method exists', 502);
+				throw new Exception('No method exists.', 502);
 			}
 			$this->{$this->method}($request);
 		} catch (Exception $e) {
@@ -25,6 +28,15 @@ class ApiDefaultController extends ApiBaseController {
 		}
 
 		return new WP_REST_Response($this->response, $this->response_status);
+	}
+
+
+	/**
+	 * @return bool
+	 */
+	private function is_api_enabled() {
+		$enable_opt = get_option(Constants_Dgcpdb::enable_api_option_key, 'yes');
+		return $enable_opt == 'yes';
 	}
 
 	public function find_store(WP_REST_Request $request) {

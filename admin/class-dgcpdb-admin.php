@@ -194,7 +194,6 @@ class Dgcpdb_Admin {
 	function dgcpdb_main_slug_callback() {
 		//handle data saving
 		if (!empty($_POST)) {
-			//			error_log('$_POST ' . var_export($_POST, true));
 			if (isset($_POST['user_id'])) {
 				for ($i = 0; $i < sizeof($_POST['user_id']); $i++) {
 					update_user_meta(
@@ -202,7 +201,7 @@ class Dgcpdb_Admin {
 						Constants_Dgcpdb::my_user_meta_key,
 						array(
 							'lat'      => $_POST['lat'][$i],
-							'lng'      => $_POST['lat'][$i],
+							'lng'      => $_POST['lng'][$i],
 							'diameter' => $_POST['diameter'][$i],
 							'enabled'  => isset($_POST['enabled'][$i]) ? 'yes' : 'no'
 						)
@@ -210,8 +209,11 @@ class Dgcpdb_Admin {
 				}
 			}
 
-			$enable_api_option_key = isset($_POST[Constants_Dgcpdb::enable_api_option_key]) ? 'yes' : 'no';
+			$enable_api_option_key = isset($_POST['enable_api']) ? 'yes' : 'no';
 			update_option(Constants_Dgcpdb::enable_api_option_key, $enable_api_option_key);
+
+			$no_store_message_html = isset($_POST['api_not_found_message']) ? $_POST['api_not_found_message'] : '';
+			update_option(Constants_Dgcpdb::not_found_city_message_api_option_key, $no_store_message_html);
 
 		}
 		require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-coordinate.php';

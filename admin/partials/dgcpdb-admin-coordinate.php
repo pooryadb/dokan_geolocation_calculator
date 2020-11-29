@@ -131,7 +131,7 @@ if (empty($dokan_user_id_list)) {
 
             <div class="my-5">
                 <label for="api_not_found_message">
-                    <h5><?php _e('Enter message when ther no near store to user.', 'dgcpdb'); ?></h5>
+                    <h5><?php _e('Enter message (when there is no near store to user)', 'dgcpdb'); ?></h5>
 					<?php _e('Please keep message short and only use simple HTML tags.', 'dgcpdb'); ?>
                 </label>
 				<?php

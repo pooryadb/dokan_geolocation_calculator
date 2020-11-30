@@ -218,6 +218,8 @@ class Dgcpdb_Admin {
 					);
 				}
 			}
+
+			$msg = __('Data saved.', 'dgcpdb');
 		}
 		require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-coordinate.php';
 	}
@@ -234,6 +236,7 @@ class Dgcpdb_Admin {
 			) : '';
 			update_option(Constants_Dgcpdb::not_found_city_message_api_option_key, $no_store_message_html);
 
+			$msg = __('Data saved.', 'dgcpdb');
 		}
 		require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-api.php';
 	}

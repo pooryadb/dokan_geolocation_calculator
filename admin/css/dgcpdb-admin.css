@@ -11,16 +11,17 @@ h3 a {
 }
 
 .dgcpdb_message {
-    border: 1px solid #e7e62a;
-    border-right: 4px solid #e7e62a !important;
+    border: 1px solid #e1e02a;
     border-radius: 5px;
-    background-color: whitesmoke;
+    background-color: #e1e02a ;
     padding: 5px;
     margin: 10px;
 }
 
 .dgcpdb_message p {
-    color: #333333;
+    margin: 0;
+    height: 100%;
+    color: #1e1e1e;
     font-weight: bold;
 }
 

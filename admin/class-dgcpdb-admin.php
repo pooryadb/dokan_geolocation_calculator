@@ -169,8 +169,8 @@ class Dgcpdb_Admin {
 
 		//---------------------------------
 
-		$page_title = __("Coordinates", "sr_pdb");
-		$menu_title = __("Coordinates", "sr_pdb");
+		$page_title = __("Coordinates", "dgcpdb");
+		$menu_title = __("Coordinates", "dgcpdb");
 		$slug       = $main_slug;
 		$function   = array($this, 'dgcpdb_main_slug_callback');
 

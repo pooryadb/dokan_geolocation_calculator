@@ -67,7 +67,7 @@ if (!current_user_can('manage_options')) {
         <hr>
 
         <label for="api_not_found_message">
-            <h5><?php _e('Enter message (when there is no near store to user)', 'dgcpdb'); ?></h5>
+            <h5><?php _e('Message when no store found:', 'dgcpdb'); ?></h5>
 			<?php _e('Please keep message short and only use simple HTML tags.', 'dgcpdb'); ?>
         </label>
 		<?php

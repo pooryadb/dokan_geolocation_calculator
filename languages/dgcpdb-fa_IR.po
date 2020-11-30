@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-11-29 23:51+0330\n"
-"PO-Revision-Date: 2020-11-29 23:58+0330\n"
+"POT-Creation-Date: 2020-11-30 22:42+0330\n"
+"PO-Revision-Date: 2020-11-30 22:43+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -15,96 +15,116 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/class-dgcpdb-admin.php:142
+#: admin/class-dgcpdb-admin.php:135
 #, php-format
 msgid "please enable dokan-lite plugin or %s plugin will not work correctly"
 msgstr "لطفا افزونه دکان-لایت را فعال کنید، واگرنه افزونه %s به درستی کار نخواهد کرد"
 
-#: admin/class-dgcpdb-admin.php:147
+#: admin/class-dgcpdb-admin.php:140
 #, php-format
 msgid "please enable dokan-pro plugin or %s plugin will not work correctly"
 msgstr "لطفا افزونه دکان-پرو را فعال کنید، واگرنه افزونه %s به درستی کار نخواهد کرد"
 
-#: admin/class-dgcpdb-admin.php:163
+#: admin/class-dgcpdb-admin.php:156
 msgid "Dokan stores geolocation"
 msgstr "مختصات فروشگاه های دکان"
 
-#: admin/class-dgcpdb-admin.php:164
+#: admin/class-dgcpdb-admin.php:157
 msgid "Dokan stores PDB"
 msgstr "فروشگاه های دکان (PDB)"
 
-#: admin/class-dgcpdb-admin.php:179 admin/class-dgcpdb-admin.php:180
+#: admin/class-dgcpdb-admin.php:172 admin/class-dgcpdb-admin.php:173
 msgid "Coordinates"
 msgstr "مختصات"
+
+#: admin/class-dgcpdb-admin.php:188 admin/class-dgcpdb-admin.php:189
+msgid "API"
+msgstr "API"
+
+#: admin/class-dgcpdb-admin.php:226 admin/class-dgcpdb-admin.php:243
+msgid "Data saved."
+msgstr "تنظیمات ذخیره شد."
+
+#: admin/partials/dgcpdb-admin-api.php:37
+msgid "Enable WP-API ?"
+msgstr "WP-API فعال باشد؟"
+
+#: admin/partials/dgcpdb-admin-api.php:70
+msgid "Message when no store found:"
+msgstr "پیغامی برای زمانی که هیچ فروشگاهی پیدا نشود:"
+
+#: admin/partials/dgcpdb-admin-api.php:71
+msgid "Please keep message short and only use simple HTML tags."
+msgstr "لطفا پیغام را کوتاه بنویسید و فقط از تگ های HTML ساده استفاده کنید."
+
+#: admin/partials/dgcpdb-admin-api.php:74
+msgid "There is no store near you!"
+msgstr "هیچ فروشگاهی در نزدیکی شما پیدا نشد!"
+
+#: admin/partials/dgcpdb-admin-api.php:87
+#: admin/partials/dgcpdb-admin-coordinate.php:70
+#: admin/partials/dgcpdb-admin-coordinate.php:153
+msgid "Save"
+msgstr "ذخیره"
 
 #: admin/partials/dgcpdb-admin-coordinate.php:33
 msgid "No vendor registered!"
 msgstr "هیچ فروشنده ای ثبت نشده است!"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:47
+#: admin/partials/dgcpdb-admin-coordinate.php:63
 msgid "Stores Table"
 msgstr "جدول فروشگاه ها"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:52
+#: admin/partials/dgcpdb-admin-coordinate.php:67
+msgid "Item per page"
+msgstr "تعداد در صفحه"
+
+#: admin/partials/dgcpdb-admin-coordinate.php:80
 msgid "id"
 msgstr "id"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:53
+#: admin/partials/dgcpdb-admin-coordinate.php:81
 msgid "name"
 msgstr "نام"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:54
+#: admin/partials/dgcpdb-admin-coordinate.php:82
 msgid "store name"
 msgstr "نام فروشگاه"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:55
+#: admin/partials/dgcpdb-admin-coordinate.php:83
 msgid "city"
 msgstr "شهر"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:56
+#: admin/partials/dgcpdb-admin-coordinate.php:84
 msgid "latitude"
 msgstr "عرض جغرافیایی(latitude)"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:57
+#: admin/partials/dgcpdb-admin-coordinate.php:85
 msgid "longitude"
 msgstr "طول جغرافیایی(longitude)"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:58
+#: admin/partials/dgcpdb-admin-coordinate.php:86
 msgid "diameter (KM)"
 msgstr "شعاع (کیلو متر)"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:59
+#: admin/partials/dgcpdb-admin-coordinate.php:87
 msgid "enabled"
 msgstr "فعال"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:71
+#: admin/partials/dgcpdb-admin-coordinate.php:101
 msgid "Store-Name isn't set !!"
 msgstr "نام فروشگاه تنظیم نشده است!"
 
-#: admin/partials/dgcpdb-admin-coordinate.php:73
+#: admin/partials/dgcpdb-admin-coordinate.php:103
 msgid "City isn't set !!"
 msgstr "شهر تنظیم نشده است!"
-
-#: admin/partials/dgcpdb-admin-coordinate.php:122
-msgid "API section"
-msgstr "بخش API"
-
-#: admin/partials/dgcpdb-admin-coordinate.php:129
-msgid "Enable WP-API ?"
-msgstr "WP-API فعال باشد؟"
-
-#: admin/partials/dgcpdb-admin-coordinate.php:134
-msgid "Enter message (when there is no near store to user)"
-msgstr "پیغام را وارد کنید (زمانی که هیچ فروشگاه نزدیکی پیدا نشود)"
-
-#: admin/partials/dgcpdb-admin-coordinate.php:135
-msgid "Please keep message short and only use simple HTML tags."
-msgstr "لطفا پیغام رو کوتاه بنویسید و فقط از تگ های HTML ساده استفاده کنید"
-
-#: admin/partials/dgcpdb-admin-coordinate.php:153
-msgid "Save"
-msgstr "ذخیره"
 
 #: dokan_geolocation_calculator_pdb.php:39
 msgid "Dokan Geolocation Calculator"
 msgstr "محاسبه گر مختصات دکان"
+
+#~ msgid "Enter message (when there is no near store to user)"
+#~ msgstr "پیغام را وارد کنید (زمانی که هیچ فروشگاه نزدیکی پیدا نشود)"
+
+#~ msgid "API section"
+#~ msgstr "بخش API"

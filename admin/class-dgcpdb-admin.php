@@ -182,6 +182,23 @@ class Dgcpdb_Admin {
 			$slug,
 			$function
 		);
+
+		//---------------------------------
+
+		$page_title = __("API", "dgcpdb");
+		$menu_title = __("API", "dgcpdb");
+		$slug       = Constants_Dgcpdb::api_menu_slug;
+		$function   = array($this, 'dgcpdb_api_slug_callback');
+
+		add_submenu_page(
+			$main_slug,
+			$page_title,
+			$menu_title,
+			$capability,
+			$slug,
+			$function
+		);
+
 	}
 
 	function dgcpdb_main_slug_callback() {
@@ -201,15 +218,24 @@ class Dgcpdb_Admin {
 					);
 				}
 			}
+		}
+		require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-coordinate.php';
+	}
+
+	function dgcpdb_api_slug_callback() {
+		//handle data saving
+		if (!empty($_POST)) {
 
 			$enable_api_option_key = isset($_POST['enable_api']) ? 'yes' : 'no';
 			update_option(Constants_Dgcpdb::enable_api_option_key, $enable_api_option_key);
 
-			$no_store_message_html = isset($_POST['api_not_found_message']) ? stripslashes(wp_filter_post_kses(addslashes($_POST['api_not_found_message']))) : '';
+			$no_store_message_html = isset($_POST['api_not_found_message']) ? stripslashes(
+				wp_filter_post_kses(addslashes($_POST['api_not_found_message']))
+			) : '';
 			update_option(Constants_Dgcpdb::not_found_city_message_api_option_key, $no_store_message_html);
 
 		}
-		require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-coordinate.php';
+		require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-api.php';
 	}
 
 }

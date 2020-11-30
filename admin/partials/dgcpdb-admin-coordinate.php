@@ -118,65 +118,6 @@ if (empty($dokan_user_id_list)) {
             </tbody>
         </table>
 
-        <div class="dgcpdb_form">
-            <h3 id="api_section"><a href="#api_section"><?php _e('API section', 'dgcpdb'); ?></a></h3>
-            <div class="form-check">
-                <label class="dgcpdb_switch">
-                    <input type="checkbox" class="form-check-input" name="enable_api"
-						<?php checked(get_option(Constants_Dgcpdb::enable_api_option_key, 'yes'), 'yes'); ?>>
-                    <span class="dgcpdb_switch_slider round"></span>
-                </label>
-                <label class="form-check-label"><?php _e('Enable WP-API ?', 'dgcpdb'); ?></label>
-                <div class="dgcpdb_code_box">
-                    <table>
-                        <tr>
-                            <td>API URL:</td>
-                            <td><code><?php echo sprintf("%s/wp-json/dgcpdb/v1/find_store", site_url()) ?></code></td>
-                        </tr>
-                        <tr>
-                            <td>method:</td>
-                            <td><code>Post</code></td>
-                        </tr>
-                        <tr>
-                            <td>params:</td>
-                            <td><code>lat=[float] & lng=[float]</code></td>
-                        </tr>
-                        <tr>
-                            <td>json response:</td>
-                            <td>
-                                <code>
-                                    {
-                                    "message" => [HTML message when city not-found],
-                                    "city" => [string city-name | null]
-                                    }
-                                </code>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="my-5">
-                <label for="api_not_found_message">
-                    <h5><?php _e('Enter message (when there is no near store to user)', 'dgcpdb'); ?></h5>
-					<?php _e('Please keep message short and only use simple HTML tags.', 'dgcpdb'); ?>
-                </label>
-				<?php
-				$content = get_option(Constants_Dgcpdb::not_found_city_message_api_option_key, "There is no store near you!");
-				wp_editor(
-					$content,
-					'api_not_found_message',
-					array(
-						'textarea_name' => 'api_not_found_message',
-						'textarea_rows' => 3,
-						'quicktags'     => array('buttons' => 'strong,em,link'),
-						'teeny'         => true,
-						'media_buttons' => false,
-					)
-				); ?>
-            </div>
-        </div>
-
         <input type="submit" class="btn btn-primary px-5 my-5" value="<?php _e('Save', 'dgcpdb'); ?>">
 
     </form>

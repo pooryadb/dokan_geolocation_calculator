@@ -219,6 +219,10 @@ class Dgcpdb_Admin {
 				}
 			}
 
+			if (isset($_POST['store_item_per_page'])) {
+				update_option(Constants_Dgcpdb::coordinate_item_per_page_option_key, $_POST['store_item_per_page']);
+			}
+
 			$msg = __('Data saved.', 'dgcpdb');
 		}
 		require_once plugin_dir_path(__FILE__) . 'partials/dgcpdb-admin-coordinate.php';

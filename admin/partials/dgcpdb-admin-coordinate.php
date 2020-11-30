@@ -33,6 +33,23 @@ if (empty($dokan_user_id_list)) {
 	$msg = __('No vendor registered!', 'dgcpdb');
 }
 
+//-------- paginate table:
+$results_per_page = get_option(Constants_Dgcpdb::coordinate_item_per_page_option_key, 10);
+$current_page     = isset($_GET['paged']) ? $_GET['paged'] : 1;
+
+$args = array(
+	'base'     => @add_query_arg('paged', '%#%'),
+	'format'   => '',
+	'total'    => ceil(sizeof($dokan_user_id_list) / $results_per_page),
+	'current'  => $current_page,
+	'show_all' => false,
+	'type'     => 'plain',
+);
+
+$start_index  = ($current_page - 1) * $results_per_page;
+$end_index_p1 = $start_index + $results_per_page;
+$end_index_p1 = (sizeof($dokan_user_id_list) < $end_index_p1) ? sizeof($dokan_user_id_list) : $end_index_p1;
+//-------- paginate table:
 ?>
 
 <div class="wrap">
@@ -43,9 +60,20 @@ if (empty($dokan_user_id_list)) {
         </div>
 	<?php } ?>
 
-    <form action="" method="post">
-        <h3 id="stores_table"><a href="#stores_table"><?php _e('Stores Table', 'dgcpdb'); ?></a></h3>
+    <h3 id="stores_table"><a href="#stores_table"><?php _e('Stores Table', 'dgcpdb'); ?></a></h3>
 
+    <div class="page-link d-flex flex-row justify-content-between">
+        <form action="" method="post" class="form-inline small">
+            <input type="number" step="1" min="1" name="store_item_per_page" placeholder="<?php _e('Item per page', 'dgcpdb'); ?>"
+                   value="<?php echo get_option(Constants_Dgcpdb::coordinate_item_per_page_option_key, 10); ?>">
+
+            <input type="submit" class="btn btn-secondary btn-sm" value="<?php _e('Save', 'dgcpdb'); ?>">
+        </form>
+        <span class="alert-link">
+			<?php echo paginate_links($args); ?>
+        </span>
+    </div>
+    <form action="" method="post">
         <table class="table dgcpdb_zebra_style">
             <thead>
             <tr>
@@ -60,7 +88,9 @@ if (empty($dokan_user_id_list)) {
             </tr>
             </thead>
             <tbody class="list">
-			<?php foreach ($dokan_user_id_list as $index => $user_id) {
+			<?php for ($index = $start_index; $index < $end_index_p1; $index++) {
+				$user_id = $dokan_user_id_list[$index];
+
 				$user_data        = get_user_meta($user_id);
 				$user_dokan_data  = get_user_meta($user_id, 'dokan_profile_settings')[0];
 				$user_dgcpdb_data = get_user_meta($user_id, Constants_Dgcpdb::my_user_meta_key)[0];
@@ -117,7 +147,9 @@ if (empty($dokan_user_id_list)) {
 			<?php } ?>
             </tbody>
         </table>
-
+        <div class="page-link alert-link text-center">
+			<?php echo paginate_links($args); ?>
+        </div>
         <input type="submit" class="btn btn-primary px-5 my-5" value="<?php _e('Save', 'dgcpdb'); ?>">
 
     </form>

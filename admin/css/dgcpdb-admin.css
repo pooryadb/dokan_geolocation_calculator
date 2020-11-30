@@ -30,7 +30,7 @@ h3 a {
 table.dgcpdb_zebra_style {
     text-align: left;
     border: 1px solid #ccc;
-    margin-bottom: 25px;
+    margin-bottom: 0;
     width: 100%;
     border-collapse: collapse;
     background-color: #ececec;

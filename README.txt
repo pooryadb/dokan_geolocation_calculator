@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: poorya.db
 Donate link: http://romroid.ir
-Tags: wordpress, dokan, plugin, geolocation, rest-api, api, php
+Tags: wordpress, dokan, plugin, geolocation, rest-api, api, php, woocommerce, multivendor, multi-vendor, shop, vendor, seller, store, sell, online,multi seller, multi store, multi vendor, multi vendors, multistore, multivendor, product vendor, product vendors, vendor, vendor system, vendors, wc market place, wc marketplace, wc vendors, woo vendors, woocommerce market place, woocommerce marketplace, woocommerce multi vendor, e-commerce
 Requires at least:
 Tested up to: 5.4.4
 Stable tag: 5.4.4
@@ -12,7 +12,7 @@ Admin set coordinates for each store and plugin find nearest store from user loc
 
 == Description ==
 
-This wordpress plugin adds menu to beside dokan-menu and admin can set latitude, longitude, acceptable diameter for each store.
+This wordpress plugin adds menu beside dokan-menu and admin can set latitude, longitude, acceptable diameter for each store.
 Also, set new WP-api endpoint that accept lat & lng args as user location and response only nearest store name or message.
 
 == Installation ==

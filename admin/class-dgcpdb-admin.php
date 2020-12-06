@@ -136,7 +136,7 @@ class Dgcpdb_Admin {
 			echo "<div class='notice notice-error'><p>$message</p></div>";
 		}
 
-		if (is_plugin_inactive('dokan-pro/dokan-pro.php') || is_plugin_inactive('dokan-pro-s/dokan-pro.php')) {
+		if (is_plugin_inactive('dokan-pro/dokan-pro.php') && is_plugin_inactive('dokan-pro-s/dokan-pro.php')) {
 			$message = sprintf(__('please enable dokan-pro plugin or %s plugin will not work correctly', 'dgcpdb'), DGCPDB_PLUGIN_NAME);
 			echo "<div class='notice notice-error'><p>$message</p></div>";
 		}

@@ -15,8 +15,8 @@
  * @wordpress-plugin
  * Plugin Name:       Dokan Geolocation Calculator
  * Plugin URI:        Helps you to find nearest shop using user latitude & longitude.
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Description:       Admin sets coordinates for each store and plugin find nearest store from user location in a API request.
+ * Version:           1.0.1
  * Author:            poorya dehghan berenji
  * Author URI:        http://romroid.ir
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('DGCPDB_VERSION', '1.0.0');
+define('DGCPDB_VERSION', '1.0.1');
 define('DGCPDB_PLUGIN_NAME', __('Dokan Geolocation Calculator', 'dgcpdb'));
 
 require plugin_dir_path(__FILE__) . 'includes/Constants_Dgcpdb.php';

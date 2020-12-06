@@ -8,7 +8,7 @@ Stable tag: 5.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Admin set coordinates for each store and plugin find nearest store from user location in a API request.
+Admin sets coordinates for each store and plugin find nearest store from user location in a API request.
 
 == Description ==
 

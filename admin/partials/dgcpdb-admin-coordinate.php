@@ -21,6 +21,7 @@ $dokan_user_id_list = array_column(
 	get_users(
 		array(
 			'fields'       => array('ID'),
+			'role__in'     => array('administrator', 'seller', 'shop_manager'),
 			'meta_key'     => 'dokan_enable_selling',
 			'meta_value'   => 'yes',
 			'meta_compare' => 'EXISTS'
@@ -61,7 +62,10 @@ $end_index_p1 = (sizeof($dokan_user_id_list) < $end_index_p1) ? sizeof($dokan_us
 	<?php } ?>
 
     <h3 id="stores_table"><a href="#stores_table"><?php _e('Stores Table', 'dgcpdb'); ?></a></h3>
-
+    <small><?php echo sprintf(
+			__('this table only shows Enabled-vendors. In order to enable other vendors <a href="%s" target="_blank">click here</a>', 'dgcpdb'),
+			admin_url('?page=dokan#/vendors?status=pending')
+		); ?></small>
     <div class="page-link d-flex flex-row justify-content-between">
         <form action="" method="post" class="form-inline small">
             <input type="number" step="1" min="1" name="store_item_per_page" placeholder="<?php _e('Item per page', 'dgcpdb'); ?>"

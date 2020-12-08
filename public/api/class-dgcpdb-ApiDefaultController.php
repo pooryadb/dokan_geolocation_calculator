@@ -85,6 +85,7 @@ class ApiDefaultController extends ApiBaseController {
 			get_users(
 				array(
 					'fields'       => array('ID'),
+					'role__in'     => array('administrator', 'seller', 'shop_manager'),
 					'meta_key'     => 'dokan_enable_selling',
 					'meta_value'   => 'yes',
 					'meta_compare' => 'EXISTS'

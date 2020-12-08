@@ -28,7 +28,6 @@ h3 a {
 
 /*---------- zebra_style ----------*/
 table.dgcpdb_zebra_style {
-    text-align: left;
     border: 1px solid #ccc;
     margin-bottom: 0;
     width: 100%;
@@ -45,7 +44,6 @@ table.dgcpdb_zebra_style th {
 }
 
 table.dgcpdb_zebra_style td {
-    text-align: left !important;
     direction: ltr !important;
     color: #777;
     padding: 4px;
@@ -53,7 +51,6 @@ table.dgcpdb_zebra_style td {
 }
 
 table.dgcpdb_zebra_style th {
-    text-align: left !important;
 }
 
 table.dgcpdb_zebra_style tbody tr:nth-child(odd) {

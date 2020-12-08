@@ -92,7 +92,9 @@ $end_index_p1 = (sizeof($dokan_user_id_list) < $end_index_p1) ? sizeof($dokan_us
             </tr>
             </thead>
             <tbody class="list">
-			<?php for ($index = $start_index; $index < $end_index_p1; $index++) {
+			<?php
+			$i = 0;
+			for ($index = $start_index; $index < $end_index_p1; $index++, $i++) {
 				$user_id = $dokan_user_id_list[$index];
 
 				$user_data        = get_user_meta($user_id);
@@ -122,29 +124,29 @@ $end_index_p1 = (sizeof($dokan_user_id_list) < $end_index_p1) ? sizeof($dokan_us
                         id="city:<?php echo $user_id; ?>"><?php echo $user_dokan_data["address"]["city"]; ?></td>
                     <td contenteditable="false"
                         id="lat:<?php echo $user_id; ?>">
-                        <input type="number" class="dgcpdb_number_input" name="lat[]" step="0.000001" min="0" max="90"
+                        <input type="number" class="dgcpdb_number_input" name="lat[<?php echo $i; ?>]" step="0.000001" min="0" max="90"
                                value="<?php echo $user_dgcpdb_data['lat'] ?>">
                     </td>
                     <td contenteditable="false"
                         id="lng:<?php echo $user_id; ?>">
-                        <input type="number" class="dgcpdb_number_input" name="lng[]" step="0.000001" min="0" max="180"
+                        <input type="number" class="dgcpdb_number_input" name="lng[<?php echo $i; ?>]" step="0.000001" min="0" max="180"
                                value="<?php echo $user_dgcpdb_data['lng'] ?>">
                     </td>
                     <td contenteditable="false"
                         id="diameter:<?php echo $user_id; ?>">
-                        <input type="number" class="dgcpdb_number_input" name="diameter[]" step="0.1" min="0.1"
+                        <input type="number" class="dgcpdb_number_input" name="diameter[<?php echo $i; ?>]" step="0.1" min="0.1"
                                value="<?php echo $user_dgcpdb_data['diameter'] ?>">
                     </td>
                     <td contenteditable="false"
                         id="enabled:<?php echo $user_id; ?>">
                         <label class="dgcpdb_switch">
-                            <input type="checkbox" class="dgcpdb_checkbox" name="enabled[<?php echo $index; ?>]" <?php
+                            <input type="checkbox" class="dgcpdb_checkbox" name="enabled[<?php echo $i; ?>]" <?php
 							checked($user_dgcpdb_data['enabled'], 'yes') ?>>
                             <span class="dgcpdb_switch_slider round"></span>
                         </label>
                     </td>
 
-                    <input type="hidden" name="user_id[]" value="<?php echo $user_id; ?>">
+                    <input type="hidden" name="user_id[<?php echo $i; ?>]" value="<?php echo $user_id; ?>">
 
                 </tr>
 

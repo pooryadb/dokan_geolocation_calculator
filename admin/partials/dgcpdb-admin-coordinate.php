@@ -67,7 +67,7 @@ $end_index_p1 = (sizeof($dokan_user_id_list) < $end_index_p1) ? sizeof($dokan_us
 			admin_url('?page=dokan#/vendors?status=pending')
 		); ?></small>
     <div class="page-link d-flex flex-row justify-content-between">
-        <form action="" method="post" class="form-inline small">
+        <form action="<?php echo admin_url('?page=' . Constants_Dgcpdb::main_menu_slug) . '&paged=1'; ?>" method="post" class="form-inline small">
             <input type="number" step="1" min="1" name="store_item_per_page" placeholder="<?php _e('Item per page', 'dgcpdb'); ?>"
                    value="<?php echo get_option(Constants_Dgcpdb::coordinate_item_per_page_option_key, 10); ?>">
 

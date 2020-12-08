@@ -56,7 +56,7 @@ class ApiDefaultController extends ApiBaseController {
 			$result_city = $this->get_nearest_store_city_name();
 			if (is_null($result_city)) {
 				$this->response = array(
-					'message' => get_option(Constants_Dgcpdb::not_found_city_message_api_option_key, ''),
+					'message' => get_option(Constants_Dgcpdb::not_found_city_message_api_option_key, __("There is no store near you!", 'dgcpdb')),
 					'city'    => NULL,
 				);
 			} else {

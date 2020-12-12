@@ -113,8 +113,12 @@ class ApiDefaultController extends ApiBaseController {
 		$nearest_user_id       = -1;
 		$nearest_user_distance = INF;
 		foreach ($user_id_array as $index => $user_id) {
+			$meta = get_user_meta($user_id, Constants_Dgcpdb::my_user_meta_key);
+			if (!isset($meta[0])){
+				continue;
+			}
 			$user_dgcpdb_data = wp_parse_args(
-				get_user_meta($user_id, Constants_Dgcpdb::my_user_meta_key)[0],
+				$meta[0],
 				Constants_Dgcpdb::user_meta_defaults
 			);
 

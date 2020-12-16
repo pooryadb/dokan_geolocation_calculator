@@ -151,32 +151,43 @@ class ApiDefaultController extends ApiBaseController {
 	}
 
 	/**
-	 * @param string $store_lat float format
-	 * @param string $store_lng float format
+	 * This uses the ‘haversine’ formula to calculate the great-circle distance between two points – that is, the shortest distance over the
+	 * earth’s surface – giving an ‘as-the-crow-flies’ distance between the points (ignoring any hills they fly over, of course!)
+	 * =======================================
+	 * a = sin²(Δφ/2) + cos φ1 ⋅ cos φ2 ⋅ sin²(Δλ/2)
+	 * c = 2 ⋅ atan2( √a, √(1−a) )
+	 * result = R ⋅ c
+	 * =======================================
+	 * φ is latitude, λ is longitude, R is earth’s radius (mean radius = 6,371km);
+	 * note that angles need to be in radians to pass to trig functions!
+	 *
+	 * @field $this->lat_param
+	 * @field $this->lng_param
+	 * @param string $lat float format
+	 * @param string $lng float format
 	 *
 	 * @return string distance in (#.# KM) float format
 	 */
-	private function calc_distance($store_lat, $store_lng) {
-		bcscale(10);
+	private function calc_distance($lat, $lng) {
+		bcscale(10); //necessary for precision
 		$radius = "6371"; // earth radius (KM)
-		$rad    = bcdiv(pi() . "", "180");
+		$radian = bcdiv(pi() . "", "180");
 
-		$lat_rad1        = bcmul($this->lat_param, $rad);
-		$lng_rad1        = bcmul($this->lng_param, $rad);
-		$lat_rad2        = bcmul($store_lat, $rad);
-		$lng_rad2        = bcmul($store_lng, $rad);
-		$lng_rad_1_2_sub = bcsub($lng_rad1, $lng_rad2);
+		$phi_1       = bcmul($this->lat_param, $radian);
+		$phi_2       = bcmul($lat, $radian);
+		$delta_phi   = bcmul(bcsub($this->lat_param, $lat), $radian);
+		$delta_landa = bcmul(bcsub($this->lng_param, $lng), $radian);
 
-		$sin_lat1    = sin(floatval($lat_rad1)) . "";
-		$sin_lat2    = sin(floatval($lat_rad2)) . "";
-		$cos_lat1    = cos(floatval($lat_rad1)) . "";
-		$cos_lat2    = cos(floatval($lat_rad2)) . "";
-		$cos_lng_sub = cos(floatval($lng_rad_1_2_sub)) . "";
+		$sin__delta_phi_div2__pow2   = bcpow(sin(floatval($delta_phi) / 2) . "", "2");
+		$mul___cos__phi_1_2          = bcmul(cos(floatval($phi_1)) . "", cos(floatval($phi_2)) . "");
+		$sin__delta_landa_div2__pow2 = bcpow(sin(floatval($delta_landa) / 2) . "", "2");
 
-		$sin_lat1_2_mul             = bcmul($sin_lat1, $sin_lat2);
-		$cos_lat1_2_mul_cos_lng_sub = bcmul(bcmul($cos_lat1, $cos_lat2), $cos_lng_sub);
+		$formula_a = bcadd($sin__delta_phi_div2__pow2, bcmul($mul___cos__phi_1_2, $sin__delta_landa_div2__pow2));
 
-		$sin_cos_add = bcadd($sin_lat1_2_mul, $cos_lat1_2_mul_cos_lng_sub);
-		return bcmul(acos(floatval($sin_cos_add)) . "", $radius, 1);
+		$sqrt_1_minus_a = bcsqrt(bcsub("1", $formula_a));
+		$atan2_a        = atan2(floatval(bcsqrt($formula_a)), floatval($sqrt_1_minus_a));
+		$formula_c      = bcmul("2", $atan2_a . "");
+
+		return bcmul($radius, $formula_c, 1);
 	}
 }

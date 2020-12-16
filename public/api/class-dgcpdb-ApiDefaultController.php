@@ -114,7 +114,7 @@ class ApiDefaultController extends ApiBaseController {
 		$nearest_user_distance = INF;
 		foreach ($user_id_array as $index => $user_id) {
 			$meta = get_user_meta($user_id, Constants_Dgcpdb::my_user_meta_key);
-			if (!isset($meta[0])){
+			if (!isset($meta[0])) {
 				continue;
 			}
 			$user_dgcpdb_data = wp_parse_args(
@@ -157,8 +157,8 @@ class ApiDefaultController extends ApiBaseController {
 	 * @return string distance in (#.# KM) float format
 	 */
 	private function calc_distance($store_lat, $store_lng) {
-		bcscale(6);
-		$radius = "6371"; // earth radius
+		bcscale(10);
+		$radius = "6371"; // earth radius (KM)
 		$rad    = bcdiv(pi() . "", "180");
 
 		$lat_rad1        = bcmul($this->lat_param, $rad);

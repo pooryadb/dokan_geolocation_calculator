@@ -28,19 +28,19 @@ every vendor/store must have `City` field that Dokan-pro provide this option.
 
 ![Screenshot-API](https://github.com/pooryadb/dokan_geolocation_calculator/blob/master/assets/Screenshot-API.jpg)
 
-![Screenshot-Coordinates](https://github.com/pooryadb/dokan_geolocation_calculator/blob/master/assets/Screenshot-Coordinates.gif)
+![Screenshot-Coordinates](https://github.com/pooryadb/dokan_geolocation_calculator/blob/master/assets/Screenshot-Coordinates.jpg)
 
 ### API Output
 
 ##### success:
-_request_
+###### request
 ```http request
 POST http://{WEBSITE URL}/wp-json/dgcpdb/v1/find_store
 BODY [form-data]
  lat : 31.138181
  lng : 48.606906 
 ```
-_response_
+###### response
 ```json
 {
     "message": "",
@@ -48,14 +48,14 @@ _response_
 }
 ```
 ##### fail:
-_request_
+###### request
 ```http request
-POST http://{WEBSITE URL}/wp-json/dgcpdb/v1/find_store
+POST http://{WEBSITE_URL}/wp-json/dgcpdb/v1/find_store
 BODY [form-data]
- lat : 32.138181
- lng : 48.606906 
+ lat : 32.0
+ lng : 48.0 
 ```
-_response_
+###### response
 ```json
 {
     "message": "هیچ فروشگاهی در نزدیکی شما پیدا نشد! سوالی دارید؟ <a href=\"http://romroid.ir\">اینجا کلیک کنید</a>",

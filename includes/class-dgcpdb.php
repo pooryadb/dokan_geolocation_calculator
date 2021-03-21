@@ -72,7 +72,7 @@ class Dgcpdb {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'dgcpdb';
+		$this->plugin_name = DGCPDB_PLUGIN_SLUG;
 
 		$this->load_dependencies();
 		$this->set_locale();

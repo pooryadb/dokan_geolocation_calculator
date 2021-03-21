@@ -17,6 +17,10 @@ if (!current_user_can('manage_options')) {
 	return;
 }
 
+wp_enqueue_style(DGCPDB_PLUGIN_SLUG);
+wp_enqueue_style(DGCPDB_PLUGIN_SLUG . '_admin_bootstrap_css');
+wp_enqueue_script(DGCPDB_PLUGIN_SLUG . '_admin_bootstrap_js');
+
 $dokan_user_id_list = array_column(
 	get_users(
 		array(

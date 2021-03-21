@@ -36,6 +36,7 @@ if (!defined('WPINC')) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define('DGCPDB_VERSION', '1.0.5');
+define('DGCPDB_PLUGIN_SLUG', 'dgcpdb');
 define('DGCPDB_PLUGIN_NAME', __('Dokan Geolocation Calculator', 'dgcpdb'));
 
 require plugin_dir_path(__FILE__) . 'includes/Constants_Dgcpdb.php';

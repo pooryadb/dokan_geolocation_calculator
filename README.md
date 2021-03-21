@@ -35,7 +35,7 @@ every vendor/store must have `City` field that Dokan-pro provide this option.
 ##### success:
 ###### request
 ```http request
-POST http://{WEBSITE URL}/wp-json/dgcpdb/v1/find_store
+POST http://{WEBSITE_URL}/wp-json/dgcpdb/v1/find_store
 BODY [form-data]
  lat : 31.138181
  lng : 48.606906 
